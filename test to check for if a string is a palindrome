@@ -1,0 +1,32 @@
+def is_palindrome(s):
+    """Check if a string is a palindrome."""
+    s = s.lower()  # Convert to lowercase for case-insensitive comparison
+    s = ''.join(char for char in s if char.isalnum())  # Remove non-alphanumeric characters
+    return s == s[::-1]
+import unittest
+
+class TestIsPalindrome(unittest.TestCase):
+    
+    def test_palindromes(self):
+        # Test known palindromic strings
+        self.assertTrue(is_palindrome("madam"))
+        self.assertTrue(is_palindrome("racecar"))
+        self.assertTrue(is_palindrome("A man, a plan, a canal, Panama"))
+        self.assertTrue(is_palindrome("No 'x' in Nixon"))
+        self.assertTrue(is_palindrome(""))
+
+    def test_non_palindromes(self):
+        # Test known non-palindromic strings
+        self.assertFalse(is_palindrome("hello"))
+        self.assertFalse(is_palindrome("world"))
+        self.assertFalse(is_palindrome("Python"))
+    
+    def test_edge_cases(self):
+        # Test edge cases with single characters or special characters
+        self.assertTrue(is_palindrome("a"))  # Single character
+        self.assertTrue(is_palindrome(" "))  # Empty space, considered palindrome
+        self.assertTrue(is_palindrome("12321"))  # Numeric palindrome
+        self.assertFalse(is_palindrome("12345"))  # Numeric non-palindrome
+
+if _name_ == "_main_":
+    unittest.main()
