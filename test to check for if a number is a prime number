@@ -1,0 +1,39 @@
+def is_prime(number):
+    """Check if a number is a prime number."""
+    if number <= 1:
+        return False
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
+            return False
+    return True
+import unittest
+
+class TestIsPrime(unittest.TestCase):
+    
+    def test_prime_numbers(self):
+        # Test known prime numbers
+        self.assertTrue(is_prime(2))
+        self.assertTrue(is_prime(3))
+        self.assertTrue(is_prime(5))
+        self.assertTrue(is_prime(7))
+        self.assertTrue(is_prime(11))
+        self.assertTrue(is_prime(13))
+    
+    def test_non_prime_numbers(self):
+        # Test known non-prime numbers
+        self.assertFalse(is_prime(1))
+        self.assertFalse(is_prime(4))
+        self.assertFalse(is_prime(6))
+        self.assertFalse(is_prime(8))
+        self.assertFalse(is_prime(9))
+        self.assertFalse(is_prime(10))
+    
+    def test_edge_cases(self):
+        # Test edge cases
+        self.assertFalse(is_prime(-1))  # Negative number
+        self.assertFalse(is_prime(0))   # Zero
+        self.assertTrue(is_prime(17))   # A larger prime
+        self.assertFalse(is_prime(100)) # A larger non-prime
+
+if _name_ == "_main_":
+    unittest.main()
